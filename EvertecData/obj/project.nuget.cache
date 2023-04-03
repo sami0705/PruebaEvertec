@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eETQPvuvpiAMwv0b8TGzFsr6wDzuRs9ds17NASvdI9ymHG1n78dGJyx3qorFrB42H487/fmKSMSPT/FNwZyDeQ==",
+  "dgSpecHash": "jXYFL3zVDddJ1Zm/9J/88Mi80G2qUw7C34pDMysD27q1bhzbB5zkzCHVAbjcrRYTxvXaKtJbe+aeczAKFknhEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\niyir\\Documents\\GitHub\\EvertecData\\EvertecData.csproj",
+  "projectFilePath": "C:\\Users\\niyir\\Documents\\GitHub\\PruebaEvertec\\EvertecData\\EvertecData.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\niyir\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\niyir\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

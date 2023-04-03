@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\niyir\\Documents\\GitHub\\EvertecData\\EvertecData.csproj": {}
+    "C:\\Users\\niyir\\Documents\\GitHub\\PruebaEvertec\\EvertecData\\EvertecData.csproj": {}
   },
   "projects": {
-    "C:\\Users\\niyir\\Documents\\GitHub\\EvertecData\\EvertecData.csproj": {
+    "C:\\Users\\niyir\\Documents\\GitHub\\PruebaEvertec\\EvertecData\\EvertecData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\niyir\\Documents\\GitHub\\EvertecData\\EvertecData.csproj",
+        "projectUniqueName": "C:\\Users\\niyir\\Documents\\GitHub\\PruebaEvertec\\EvertecData\\EvertecData.csproj",
         "projectName": "EvertecData",
-        "projectPath": "C:\\Users\\niyir\\Documents\\GitHub\\EvertecData\\EvertecData.csproj",
+        "projectPath": "C:\\Users\\niyir\\Documents\\GitHub\\PruebaEvertec\\EvertecData\\EvertecData.csproj",
         "packagesPath": "C:\\Users\\niyir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\niyir\\Documents\\GitHub\\EvertecData\\obj\\",
+        "outputPath": "C:\\Users\\niyir\\Documents\\GitHub\\PruebaEvertec\\EvertecData\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\niyir\\AppData\\Roaming\\NuGet\\NuGet.Config",
