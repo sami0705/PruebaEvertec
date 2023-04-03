@@ -9,6 +9,9 @@ import { UserComponent } from './vistas/user/user.component';
 import { EditComponent } from './vistas/edit/edit.component';
 import { NewComponent } from './vistas/new/new.component';
 
+import {HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,10 @@ import { NewComponent } from './vistas/new/new.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
