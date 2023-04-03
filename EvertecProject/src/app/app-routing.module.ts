@@ -8,7 +8,7 @@ import { NewComponent } from './vistas/new/new.component';
 const routes: Routes = [
   { path: '', redirectTo:'user', pathMatch:'full'},
   { path: 'user', component:UserComponent},
-  { path: 'edit', component:EditComponent},
+  { path: 'edit/:id', component:EditComponent},
   { path: 'new', component:NewComponent}
 ];
 
@@ -17,3 +17,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [UserComponent,EditComponent,NewComponent]

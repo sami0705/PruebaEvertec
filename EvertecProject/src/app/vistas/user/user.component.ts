@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import {ApiEvertecService} from '../../servicios/api-evertec.service';
 import {PersonI} from '../../models/person.interface'
 import {Router} from '@angular/router';
+//import { MaritalStatus } from '../../../enums/marital_status_enum';
 
 @Component({
   selector: 'app-user',
@@ -27,6 +28,16 @@ export class UserComponent implements OnInit{
     this.api.getUsers().subscribe(data => {
      this.usersList=data
    });
+ }
+
+ editarUsuario(id:number)
+ {
+    this.router.navigate(['edit', id]);
+ }
+
+ newUser()
+ {
+    this.router.navigate(['new']);
  }
 
 }

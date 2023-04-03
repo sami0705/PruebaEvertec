@@ -16,4 +16,10 @@ export class ApiEvertecService {
     return this.http.get<PersonI[]>(url);
   }
 
+  getUser(id:number): Observable<PersonI>
+  { 
+    let url= "/api/People/" + id;
+    return this.http.get<PersonI>(url);
+  }
+
 }

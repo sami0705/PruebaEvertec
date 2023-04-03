@@ -1,6 +1,8 @@
 <app-header></app-header>
 
 <div class="container">
+    <h1>Lista de Usuarios</h1>
+    <button type="button" class="btn btn-primary" (click)="newUser()">Nuevo</button>
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
         <thead>
@@ -14,13 +16,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of usersList">
+          <tr *ngFor="let user of usersList" (click)="editarUsuario(user.idPerson)">
             <th scope="row">{{user.idPerson}}</th>
             <td>{{user.name}}</td>
             <td>{{user.lastName}}</td>
-            <td>{{user.birthdate}}</td>
+            <td>{{user.birthdate | date:'dd/MM/yyyy'}}</td>
             <td>{{user.idMaritalStatus}}</td>
-            <td>{{user.haveBrothers}}</td>
+            <td>{{user.haveBrothers | yesNo }}</td>
           </tr>         
         </tbody>
       </table>

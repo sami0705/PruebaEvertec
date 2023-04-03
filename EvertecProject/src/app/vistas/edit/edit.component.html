@@ -1,1 +1,28 @@
-<p>edit works!</p>
+<app-header></app-header>
+
+<div class="container">
+    <form [formGroup]="editForm">
+        <label>Nombre</label>
+        <input type="text" class="form-control" formControlName="name">
+
+        <label>Apellido</label>
+        <input type="text" class="form-control" formControlName="lastName">
+
+        <label>Fecha de Nacimiento</label>
+        <input type="date" class="form-control" formControlName="birthdate">
+
+       <!--<label>Foto</label>
+        <input type="image" class="form-control" formControlName="photo">-->
+
+        <label>Estado Civil</label>
+        <input type="image" class="form-control" formControlName="idMaritalStatus">
+
+        <label>Tiene Hijos</label>
+        <input type="image" class="form-control" formControlName="haveBrothers">
+   
+    </form>
+
+</div>
+
+
+<app-footer></app-footer>
