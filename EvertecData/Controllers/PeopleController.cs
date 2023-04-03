@@ -32,18 +32,24 @@ namespace EvertecData.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Person>> GetPerson(int id)
         {
-            var person = await _context.People.FindAsync(id);
-
-            if (person == null)
+            try
             {
-                return NotFound();
-            }
+                var person = await _context.People.FindAsync(id);
 
-            return person;
+                if (person == null)
+                {
+                    return NotFound();
+                }
+
+                return person;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al consultar el usuario: {ex.Message}");
+            }
         }
 
         // PUT: api/People/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPerson(int id, Person person)
         {
@@ -69,35 +75,57 @@ namespace EvertecData.Controllers
                     throw;
                 }
             }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al actualizar el usuario: {ex.Message}");
+            }
 
             return NoContent();
         }
 
+
+        /// <summary>
+        /// Creación de un nuevo usuario
+        /// </summary>
+        /// <param name="person">Datos del usuario</param>
+        /// <returns></returns>
         // POST: api/People
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Person>> PostPerson(Person person)
         {
-            _context.People.Add(person);
-            await _context.SaveChangesAsync();
+            try { 
+                _context.People.Add(person);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPerson", new { id = person.IdPerson }, person);
+                return CreatedAtAction("GetPerson", new { id = person.IdPerson }, person);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al crear el usuario: {ex.Message}");
+            }
         }
 
         // DELETE: api/People/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(int id)
         {
-            var person = await _context.People.FindAsync(id);
-            if (person == null)
+            try
             {
-                return NotFound();
+                var person = await _context.People.FindAsync(id);
+                if (person == null)
+                {
+                    return NotFound();
+                }
+
+                _context.People.Remove(person);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
             }
-
-            _context.People.Remove(person);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al eliminar el usuario: {ex.Message}");
+            }
         }
 
         private bool PersonExists(int id)
