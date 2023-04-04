@@ -22,4 +22,10 @@ export class ApiEvertecService {
     return this.http.get<PersonI>(url);
   }
 
+  putUser(form:PersonI, id:number): Observable<PersonI>
+  {
+    let url="/api/People/" + id;
+    return this.http.put<PersonI>(url, form);
+  }
+
 }

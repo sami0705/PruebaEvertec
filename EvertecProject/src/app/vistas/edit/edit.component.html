@@ -1,25 +1,57 @@
 <app-header></app-header>
 
 <div class="container">
-    <form [formGroup]="editForm">
-        <label>Nombre</label>
-        <input type="text" class="form-control" formControlName="name">
+    <form [formGroup]="editForm" >
+    <div class="row row-centered form-group">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
+            <label>ID Usuario</label>
+        <input type="text" class="form-control" formControlName="idPerson" required/>
+        </div> 
+        
+         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
+          
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
+            <label>Foto</label>
+             <input type="image" class="form-control" formControlName="photo">
+         </div>
+    </div>
+      
+        <div class="row row-centered form-group">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
+                <label>Nombre</label>
+                <input type="text" class="form-control" formControlName="name" required>
 
-        <label>Apellido</label>
-        <input type="text" class="form-control" formControlName="lastName">
+                <!--<div *ngIf="editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched)">
+                    <div *ngIf="editForm.get('name').errors.required">
+                      El nombre es requerido.
+                    </div>
+                  </div>-->
+            </div>
+           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
+                <label>Apellido</label>
+                <input type="text" class="form-control" formControlName="lastName" required>
+            </div>
+        </div>      
+        <div class="row row-centered form-group">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
+                <label>Fecha de Nacimiento</label>
+                <input type="date" class="form-control" formControlName="birthdate" required>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-centered">
+                <label>Estado Civil</label>
+                <input type="image" class="form-control" formControlName="idMaritalStatus" required>             
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-centered">
+                <label>Tiene Hijos</label>
+                <input type="image" class="form-control" formControlName="haveBrothers" required>
+            </div>
+        </div>
+       
+        <div>        
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
 
-        <label>Fecha de Nacimiento</label>
-        <input type="date" class="form-control" formControlName="birthdate">
-
-       <!--<label>Foto</label>
-        <input type="image" class="form-control" formControlName="photo">-->
-
-        <label>Estado Civil</label>
-        <input type="image" class="form-control" formControlName="idMaritalStatus">
-
-        <label>Tiene Hijos</label>
-        <input type="image" class="form-control" formControlName="haveBrothers">
-   
     </form>
 
 </div>
