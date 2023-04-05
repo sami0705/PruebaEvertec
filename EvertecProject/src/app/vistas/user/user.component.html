@@ -13,16 +13,19 @@
             <th scope="col">Fecha de Nacimiento</th>
             <th scope="col">Estado Civil</th>
             <th scope="col">Tiene Hermanos</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of usersList" (click)="editarUsuario(user.idPerson)">
+          <tr *ngFor="let user of usersList">
             <th scope="row">{{user.idPerson}}</th>
             <td>{{user.name}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.birthdate | date:'dd/MM/yyyy'}}</td>
-            <td>{{user.idMaritalStatus}}</td>
+            <td>{{user.idMaritalStatus ==1 ? 'Soltero': user.idMaritalStatus ==2 ? 'Casado':'No definido' }}</td>
             <td>{{user.haveBrothers | yesNo }}</td>
+            <td><button type="button" class="btn btn-link" (click)="editarUsuario(user.idPerson)">Editar</button> </td>
+            <td><button type="button" class="btn btn-link" (click)="deleteUser(user.idPerson)">Eliminar</button> </td>
           </tr>         
         </tbody>
       </table>

@@ -1,53 +1,64 @@
 <app-header></app-header>
 
 <div class="container">
-    <form [formGroup]="editForm" >
+    <form (ngSubmit)="editUser()" #myForm="ngForm">
     <div class="row row-centered form-group">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
-            <label>ID Usuario</label>
-        <input type="text" class="form-control" formControlName="idPerson" required/>
+            <!--<label>ID Usuario</label>
+            <input type="number" class="form-control" formControlName="idPerson" required/>-->
+            <label for="idPerson">ID Person:</label>
+            <input type="text" id="idPerson" name="idPerson" [(ngModel)]="inforUser.idPerson" requerid [disabled]="true">
         </div> 
         
-         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
+        <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
           
          </div>
          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
-            <label>Foto</label>
-             <input type="image" class="form-control" formControlName="photo">
-         </div>
+            <label>Foto</label>             
+             <input type="file" id="photo" class="form-control" formControlName="photo">
+             <img [src]="editForm.get('photo').value" *ngIf="editForm.get('photo').value">
+         </div>-->
     </div>
-      
+     
         <div class="row row-centered form-group">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
                 <label>Nombre</label>
-                <input type="text" class="form-control" formControlName="name" required>
-
-                <!--<div *ngIf="editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched)">
-                    <div *ngIf="editForm.get('name').errors.required">
-                      El nombre es requerido.
-                    </div>
-                  </div>-->
+                <input type="text" class="form-control" name="name" [(ngModel)]="inforUser.name" required>
+               
             </div>
            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
                 <label>Apellido</label>
-                <input type="text" class="form-control" formControlName="lastName" required>
+                <input type="text" class="form-control" name="lastname" [(ngModel)]="inforUser.lastName" required>
             </div>
-        </div>      
+        </div>   
         <div class="row row-centered form-group">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
-                <label>Fecha de Nacimiento</label>
-                <input type="date" class="form-control" formControlName="birthdate" required>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-centered">
+                <label>Fecha de Nacimiento: {{inforUser.birthdate | date:'dd/MM/yyyy'}}</label>
+                <input type="date" class="form-control" name="birthdate" [(ngModel)]="inforUser.birthdate" required >
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-centered">
-                <label>Estado Civil</label>
-                <input type="image" class="form-control" formControlName="idMaritalStatus" required>             
+                <label>Estado Civil</label><br/>
+                <select id="idMaritalStatus"  name="idMaritalStatus" [(ngModel)]="inforUser.idMaritalStatus" >
+                    <option value="1">Soltero</option>
+                    <option value="2">Casado</option>
+                </select>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-centered">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-centered">
+                
                 <label>Tiene Hijos</label>
-                <input type="image" class="form-control" formControlName="haveBrothers" required>
+                <br/>
+                <label>
+                    <input type="radio" name="haveBrothers" value='true' [(ngModel)]="haveBrothers"  required>
+                    Sí
+                  </label>
+                  &nbsp;
+                  <label>
+                    <input type="radio" name="haveBrothers" value='false' [(ngModel)]="haveBrothers"  required>
+                    No
+                  </label>
             </div>
         </div>
-       
+      
         <div>        
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>

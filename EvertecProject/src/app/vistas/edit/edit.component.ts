@@ -4,6 +4,11 @@ import { PersonI } from 'src/app/models/person.interface';
 import {ApiEvertecService} from '../../servicios/api-evertec.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { PersonPruebaI } from 'src/app/models/PersonPrueba.interface';
+import { FormsModule } from '@angular/forms';
+import { YesNoPipe } from 'src/app/yes-no.pipe';
+
 
 @Component({
   selector: 'app-edit',
@@ -17,62 +22,65 @@ export class EditComponent implements OnInit {
   constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiEvertecService){
 
   }
+  // En el componente, puedes crear un objeto de tipo PersonPruebaI con valores por defecto para todas las propiedades requeridas:
+ inforUser: PersonI = {
+  idPerson: 0,
+  name: '',
+  lastName: '',
+  birthdate: new Date(),
+  photo: '',
+  idMaritalStatus: 0,
+  haveBrothers: false
+};
 
-  inforUser:PersonI | undefined;
-
-  editForm= new FormGroup({
-    idPerson:   new FormControl(0), 
-    name: new FormControl('',[Validators.required]),          
-    lastName:   new FormControl(''),     
-    birthdate:   new FormControl(''),    
-    photo:       new FormControl(''),    
-    idMaritalStatus: new FormControl(1),
-    haveBrothers:  new FormControl(false)  
-  })
+haveBrothers:string = "false";
+birthdate:string = "1990-01-01";
 
 ngOnInit(): void{
-  this.getUser();  
+  let userId:number= Number(this.activerouter.snapshot.paramMap.get('id'));
+  this.getUser(userId);  
 }
 
-getUser()
+
+/** Consulta un usuario por id */
+getUser(userId: number)
 {
-  let userId:number= Number(this.activerouter.snapshot.paramMap.get('id'));
-  
-  this.api.getUser(userId).subscribe(data =>{   
+this.api.getUser(userId).subscribe(data =>{   
     this.inforUser= data;
-    const datePipe = new DatePipe('en-CO');
-    
-    this.editForm.setValue({
+   const datePipe = new DatePipe('en-CO');
+   this.birthdate = datePipe.transform(this.inforUser.birthdate, 'shortDate')!;
+   this.haveBrothers = this.inforUser.haveBrothers? "true": "false";
+
+   console.log(this.inforUser);
+
+    // Inicializar el objeto person con el valor del idPerson
+   //this.inforUser.idPerson = this.inforUser.idPerson;
+   /* this.editForm.setValue({
       'idPerson': this.inforUser.idPerson,
-      'name': this.inforUser.name,
+      /*'name': this.inforUser.name,
       'lastName': this.inforUser.lastName,
       'birthdate': datePipe.transform(this.inforUser.birthdate, 'dd/MM/yyyy'),
       'photo':    this.inforUser.photo,
       'idMaritalStatus':this.inforUser.idMaritalStatus,
       'haveBrothers': this.inforUser.haveBrothers
-    })
+    })*/
   })
 }
 
-putDataForm(form:Partial<PersonI>)
-{
-  //form.name = form.name ?? ''; // Proporcionar una cadena vacía si name es null
-  let userId:number= Number(this.activerouter.snapshot.paramMap.get('id'));
+//editar un usuario
+editUser() {
+  this.inforUser.haveBrothers = this.parseBoolean(this.haveBrothers);
+  console.log(this.inforUser);
 
-  const data: PersonI = {
-    idPerson: form.idPerson || 0,
-    name: form.name || '',
-    lastName: form.lastName || '',
-    birthdate: form.birthdate || new Date(),
-    photo: form.photo || null,
-    idMaritalStatus: form.idMaritalStatus || 0,
-    haveBrothers: form.haveBrothers || false
-  };
+  //editar usuario
+  this.api.putUser(this.inforUser).subscribe(data =>{ 
+    this.router.navigate(['user']);
+  });
+}
 
-  this.api.putUser(form as PersonI,userId).subscribe(data =>{
-
-    console.log(data);
-  })
+//Convierte un string a boolean
+private parseBoolean(value: string): boolean {
+  return value === 'true';
 }
 
 }

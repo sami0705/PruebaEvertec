@@ -9,6 +9,8 @@ import { FooterComponent } from './Common/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { YesNoPipe } from './yes-no.pipe';
+import { ShortDatePipe } from './short-date.pipe';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { YesNoPipe } from './yes-no.pipe';
     HeaderComponent,
     FooterComponent,
     routingComponents,
-    YesNoPipe // Pipe personalizado para conversión de boolean a Si y No
+    YesNoPipe, // Pipe personalizado para conversión de boolean a Si y No
+    ShortDatePipe
   ],
   imports: [
     BrowserModule,

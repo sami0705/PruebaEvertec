@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef} from '@angular/core';
 import {ApiEvertecService} from '../../servicios/api-evertec.service';
 import {PersonI} from '../../models/person.interface'
 import {Router} from '@angular/router';
@@ -15,7 +15,7 @@ export class UserComponent implements OnInit{
 
   usersList: PersonI[] =[];
 
-  constructor(private api:ApiEvertecService, private router:Router)
+  constructor(private api:ApiEvertecService, private router:Router,private changeDetectorRef: ChangeDetectorRef)
   {
     this.getPeople();
   }
@@ -39,6 +39,16 @@ export class UserComponent implements OnInit{
  {
     this.router.navigate(['new']);
  }
+
+deleteUser(id:number)
+{
+  this.api.deleteUser(id).subscribe(data => {    
+  });
+
+  // Se actualiza el componente
+  window.location.reload();
+}
+
 
 }
 

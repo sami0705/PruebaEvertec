@@ -22,10 +22,16 @@ export class ApiEvertecService {
     return this.http.get<PersonI>(url);
   }
 
-  putUser(form:PersonI, id:number): Observable<PersonI>
+  putUser(form:PersonI): Observable<PersonI>
   {
-    let url="/api/People/" + id;
+    let url="/api/People/" + form.idPerson;
     return this.http.put<PersonI>(url, form);
+  }
+
+  deleteUser(id:number): Observable<any>
+  {
+    let url= "/api/People/" + id;
+    return this.http.delete<PersonI>(url);
   }
 
 }
