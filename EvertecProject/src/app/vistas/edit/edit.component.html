@@ -2,29 +2,29 @@
 
 <div class="container">
     <form (ngSubmit)="editUser()" #myForm="ngForm">
-    <div class="row row-centered form-group">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
-            <!--<label>ID Usuario</label>
-            <input type="number" class="form-control" formControlName="idPerson" required/>-->
-            <label for="idPerson">ID Person:</label>
-            <input type="text" id="idPerson" name="idPerson" [(ngModel)]="inforUser.idPerson" requerid [disabled]="true">
-        </div> 
-        
-        <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
-          
-         </div>
-         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
-            <label>Foto</label>             
-             <input type="file" id="photo" class="form-control" formControlName="photo">
-             <img [src]="editForm.get('photo').value" *ngIf="editForm.get('photo').value">
-         </div>-->
-    </div>
+    
+        <div class="row row-centered form-group">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
+                <!--<label>ID Usuario</label>
+                <input type="number" class="form-control" formControlName="idPerson" required/>-->
+                <label for="idPerson">ID Person:</label>
+                <input type="text" id="idPerson" name="idPerson" [(ngModel)]="inforUser.idPerson" requerid [disabled]="true">
+            </div> 
+            
+            <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
+              
+             </div>
+             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-centered">
+                <label>Foto</label>             
+                 <input type="file" id="photo" class="form-control" formControlName="photo">
+                 <img [src]="editForm.get('photo').value" *ngIf="editForm.get('photo').value">
+             </div>-->
+        </div>
      
         <div class="row row-centered form-group">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
                 <label>Nombre</label>
-                <input type="text" class="form-control" name="name" [(ngModel)]="inforUser.name" required>
-               
+                <input type="text" class="form-control" name="name" [(ngModel)]="inforUser.name" required>               
             </div>
            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
                 <label>Apellido</label>
@@ -58,10 +58,12 @@
                   </label>
             </div>
         </div>
-      
+        
         <div>        
             <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-primary" (click)="volver()">Volver</button>
         </div>
+        <br> <br>
 
     </form>
 

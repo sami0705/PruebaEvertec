@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { YesNoPipe } from './yes-no.pipe';
 import { ShortDatePipe } from './short-date.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ShortDatePipe } from './short-date.pipe';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PersonI } from '../models/person.interface';
+import { PersonI } from '../../models/person.interface';
 import {HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -22,16 +22,22 @@ export class ApiEvertecService {
     return this.http.get<PersonI>(url);
   }
 
-  putUser(form:PersonI): Observable<PersonI>
+  putUser(form:PersonI): Observable<any>
   {
     let url="/api/People/" + form.idPerson;
-    return this.http.put<PersonI>(url, form);
+    return this.http.put<any>(url, form);
   }
 
   deleteUser(id:number): Observable<any>
   {
     let url= "/api/People/" + id;
-    return this.http.delete<PersonI>(url);
+    return this.http.delete<any>(url);
   }
+
+ postUser(form:PersonI): Observable<any>
+{
+    let url="/api/People/";
+    return this.http.post<any>(url, form);
+}
 
 }

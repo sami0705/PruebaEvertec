@@ -1,5 +1,5 @@
 import { Component, OnInit,ChangeDetectorRef} from '@angular/core';
-import {ApiEvertecService} from '../../servicios/api-evertec.service';
+import {ApiEvertecService} from '../../servicios/api/api-evertec.service';
 import {PersonI} from '../../models/person.interface'
 import {Router} from '@angular/router';
 //import { MaritalStatus } from '../../../enums/marital_status_enum';
@@ -46,7 +46,7 @@ deleteUser(id:number)
   });
 
   // Se actualiza el componente
-  window.location.reload();
+  //window.location.reload();
 }
 
 

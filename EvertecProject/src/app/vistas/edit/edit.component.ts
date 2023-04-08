@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router'
 import { PersonI } from 'src/app/models/person.interface';
-import {ApiEvertecService} from '../../servicios/api-evertec.service';
+import {ApiEvertecService} from '../../servicios/api/api-evertec.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Observable } from 'rxjs';
-import { PersonPruebaI } from 'src/app/models/PersonPrueba.interface';
-import { FormsModule } from '@angular/forms';
-import { YesNoPipe } from 'src/app/yes-no.pipe';
+import {AlertsService} from '../../servicios/alerts/alerts.service';
 
 
 @Component({
@@ -19,7 +16,7 @@ import { YesNoPipe } from 'src/app/yes-no.pipe';
 
 export class EditComponent implements OnInit {
  
-  constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiEvertecService){
+  constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiEvertecService, private alert:AlertsService){
 
   }
   // En el componente, puedes crear un objeto de tipo PersonPruebaI con valores por defecto para todas las propiedades requeridas:
@@ -74,13 +71,28 @@ editUser() {
 
   //editar usuario
   this.api.putUser(this.inforUser).subscribe(data =>{ 
+    
+    /*if(data.status === 200)
+      this.alert.showSuccess("Usuario modificado exitosamente","Edición Exitosa");
+    else
+      this.alert.showError("Se presentó un errr al editar el usuario","Error");*/
+      console.log(data);
+      this.alert.showSuccess("Usuario modificado exitosamente","Edición Exitosa");
     this.router.navigate(['user']);
   });
 }
 
 //Convierte un string a boolean
-private parseBoolean(value: string): boolean {
+parseBoolean(value: string): boolean {
   return value === 'true';
 }
 
+volver()
+{
+  this.router.navigate(['user']);
 }
+
+
+}
+
+
